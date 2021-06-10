@@ -37,6 +37,11 @@ app.get("/", (req, res) => {
         // Consultar todos los "Post" desde la base de datos
         let posts = await Post.findAll();
 
+        let comments = await Comment.findAll();
+        //imprime en consola num. de comments 
+        console.log("comments.length", comments.length);
+
+        let totalComments = comments.length;
         //esto escribe en la consola nomas jaja
         console.log('posts.length', posts.length);
         posts.forEach((post) => {
@@ -51,6 +56,7 @@ app.get("/", (req, res) => {
             // Permitir que el template utilice una variable posts: cuyo valor será la variable posts
             // Nombre variable en template: valor que tendrá
             posts: posts,
+            totalComments: totalComments,
             //aqui lo imprtante es que le pasamos al ejs la variabale posts
         });
     })();
@@ -141,14 +147,19 @@ app.get('/comments/:id', (req, res, next)=> {
                 postId: id,
             },
         });
-        
+
+        //imprime en consola num. de comments 
+        console.log("comments.length", comments.length);
+
+        let totalComments = comments.length;
         
 
         res.render("pages/comments", {
-        // Pasar la información de los details al ejs (html) para mostrarlos
+        // Pasar la información  al ejs (html) para mostrarlos
         // Permitir que el template utilice las variables   
             post: post,
             comments: comments,
+            totalComments: totalComments,
         });
 
     })();

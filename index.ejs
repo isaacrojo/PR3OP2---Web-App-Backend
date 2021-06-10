@@ -40,8 +40,10 @@
                 <p>"" <%= post.content %> ""</p>
                 <br>
                 <br>
-                <!-- <i>( <= totalComments %> ) comments </i> -->
-                <a href="/comments/<%= post.id %>">Ver Post</a>
+                <br>
+                <i> ( <%= totalComments %> )  Comments...  </i>
+                <br>
+                <a href="/comments/<%= post.id %>">See Post and Comments</a>
                 
             </li>
         <% }); %> 

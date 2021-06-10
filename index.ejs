@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+    <title>MyTuiter | index </title>
+</head>
+<body>
+    <nav>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">MyTuiter Logo</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                  <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  <a class="nav-link" href="#">The Comments</a>
+                  </div>
+              </div>
+            </div>
+          </nav>
+    </nav>
+
+    <h1>Welcome to MyTuiter, share something with us!</h1>
+    
+    <!-- <p>TODO. Para poner el formulario en esta misma pagina: Si  atributo ACTION está vacío, es la página que contiene el formulario la que se recargará con los datos como parámetros </p> -->
+    <a href="/create">+ Add Post</a>
+
+    <ul>
+        <% posts.forEach((post) => { %>
+            <li>
+            <hr>
+                <h4> Post de: <%= post.name %>  </h4>
+                <br>
+                <p>"" <%= post.content %> ""</p>
+                <br>
+                <br>
+                <!-- <i>( <= totalComments %> ) comments </i> -->
+                <a href="/comments/<%= post.id %>">Ver Post</a>
+                
+            </li>
+        <% }); %> 
+    </ul>
+
+    <footer>
+        <br>
+        <p>Made by Isaac Najera H. | 2021 </p>
+        <br>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+</body>
+</html>

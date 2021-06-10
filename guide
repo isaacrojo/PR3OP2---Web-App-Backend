@@ -1,0 +1,79 @@
+Paso 1: iniciar proyecto de Node.js
+(nombre de archivo de solo una palabra)
+
+npm init -y
+
+---
+
+Paso 2: Instalar librerías: express, ejs, sequelize, mysql2
+
+npm install express ejs sequelize mysql2
+
+---
+
+Paso 3: Crear el archivo principal: index.js
+
+----
+
+Paso 4: Poner código básico para servidor
+
+const express = require("express");
+const createError = require("http-errors");
+const app = express();
+const port = 3000;
+
+app.set("view engine", "ejs");
+
+// Variables
+
+// Rutas
+app.use(express.static("public"));
+
+// Not Found
+app.use((req, res, next) => {
+    next(createError(404));
+});
+
+// error handler
+app.use((err, req, res, next) => {
+    let message = err.message;
+    let error = err;
+
+    res.status(err.status || 500);
+    res.render("pages/error", {
+        message,
+        error
+    });
+});
+
+app.listen(port, () => {
+    console.log(`Listening at http://localhost:${port}`);
+});
+
+
+Paso 5: Crear carpetas y archivos restantes
+
+/public
+/views
+/views/pages
+
+---
+
+Paso 6: Agregar primer ruta y el archivo ejs correspondiente
+app.get("/", (req, res) => {
+    res.render("pages/index");
+});
+
+
+(Crear archivo /views/pages/index.ejs)
+
+
+---
+
+Paso 7: Ejecutar y probar
+
+node index.js
+
+o
+
+nodemon index.js
